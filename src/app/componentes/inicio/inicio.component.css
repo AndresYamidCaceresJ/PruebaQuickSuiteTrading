@@ -1,0 +1,39 @@
+
+
+.tabla {
+    display: flex;
+    justify-content: center;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-header-cell {
+    background: #5594a2;
+    color: white;
+}
+
+.mat-column-title {
+    width: 20% !important;
+}
+
+.mat-column-body {
+    width: 40% !important;
+}
+
+.mat-column-id {
+    width: 6% !important;
+    ;
+}
+
+.mat-column-BOTON {
+    width: 6% !important;
+    ;
+}
+
+.btnEliminar {
+    color: #fff;
+    border-color: #ff5500;
+    background-color: #ff0011 !important;
+}

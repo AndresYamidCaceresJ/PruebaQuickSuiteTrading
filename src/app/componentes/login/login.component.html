@@ -1,0 +1,21 @@
+<div>
+    <form class="form-signin" [formGroup]="formLogin">
+        <h1 class="h3 mb-3 font-weight-normal">INICIAR SESIÓN</h1>
+        <div class="col-md-12 mb-3 mt-5">
+            <mat-form-field style="width: 100%;">
+                <mat-label>Correo</mat-label>
+                <input required formControlName="email" matInput value="">
+                <mat-error>Error campo vacio o Email invalido</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-md-12 mb-3">
+            <mat-form-field style="width: 100%;">
+                <mat-label>Contraseña</mat-label>
+                <input required formControlName="password" matInput value="">
+                <mat-error>Error campo vacio o Email invalido</mat-error>
+            </mat-form-field>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" [disabled]="formLogin.invalid"  (click)="buscar(formLogin.get('email')!.value, formLogin.get('password')!.value)">Ingresar</button>
+      </form>
+</div>
+

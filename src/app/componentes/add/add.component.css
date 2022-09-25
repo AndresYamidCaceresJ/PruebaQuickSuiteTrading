@@ -1,0 +1,14 @@
+.form-add {
+    background-color: #ffff;
+}
+
+.centrar {
+    width: 100%; 
+    justify-content: center; 
+    margin: 90px 0px;
+}
+
+h2 {
+    text-align: center; 
+    margin-top: 30px;
+}
