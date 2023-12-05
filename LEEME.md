@@ -1,10 +1,10 @@
-# PruebaNetGrid
+# QuickSuiteTrading
 
-Este proyecto se generó con [Angular CLI](https://github.com/angular/angular-cli) versión 14.2.1.
+Este proyecto se generó con [Angular CLI](https://github.com/angular/angular-cli).
 
 ## Correr en entorno de desarrollo
 
-Primero copie esta dirección (https://github.com/AndresYamidCaceresJ/pruebaNetGrid.git),
+Primero copie esta dirección (https://github.com/AndresYamidCaceresJ/QuickSuiteTrading.git),
 abra su git bash o cmd desde donde quiera clonar el proyecto.
 Una vez clonado, abra el proyecto desde su editor de codigo.
 Abra una consola o git bash desde la carpeta del proyecto o desde el editor de codigo y ejecute el siguiente comando (npm install),

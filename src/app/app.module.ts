@@ -6,8 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { InicioComponent } from './componentes/inicio/inicio.component';
 import { LoginComponent } from './componentes/login/login.component';
-import { AddComponent } from './componentes/add/add.component';
-import { EditComponent } from './componentes/edit/edit.component';
+import { DetallesPeliculaComponent  } from './componentes/detalles-pelicula/detalles.component';
 
 // modulos
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -18,17 +17,15 @@ import {MatInputModule} from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
-import {MatTableModule} from '@angular/material/table';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatSortModule} from '@angular/material/sort';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
     AppComponent,
     InicioComponent,
     LoginComponent,
-    AddComponent,
-    EditComponent
+    DetallesPeliculaComponent 
   ],
   imports: [
     BrowserModule,
@@ -42,9 +39,8 @@ import {MatSortModule} from '@angular/material/sort';
     MatInputModule,
     HttpClientModule,
     MatCardModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule
+    MatGridListModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

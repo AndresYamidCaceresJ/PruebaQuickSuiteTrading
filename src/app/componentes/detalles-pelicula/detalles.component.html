@@ -1,0 +1,21 @@
+
+<div class="peliculas-container">
+    <mat-card  class="pelicula-card">
+      <img mat-card-image [src]="pelicula[0].png" alt="{{ pelicula[0].Title }}" />
+      <mat-card-content class="pelicula-details">
+        <h3>{{ pelicula[0].Title }}</h3>
+        <p>{{ pelicula[0].Description }}</p>
+        <p>Fecha de Lanzamiento: {{ pelicula[0].Released_date }}</p>
+        <div *ngIf="videoUrl" class="video-container">
+          <iframe [src]="videoUrl" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <button mat-raised-button color="primary" (click)="estaEnListaObservacion(pelicula[0].id) ? quitarDeListaObservacion(pelicula[0]) : agregarAListaObservacion(pelicula[0])">
+          {{ estaEnListaObservacion(pelicula[0].id) ? 'Quitar de la lista' : 'Agregar a la lista' }}
+        </button>
+        <span *ngIf="estaEnListaObservacion(pelicula[0].id)">En mi lista de seguimiento</span>
+        <div style="margin-top: 10px;">
+            <button mat-raised-button color="primary" (click)="volver()">{{'Volver'}}</button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>

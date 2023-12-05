@@ -1,25 +1,18 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
-import { ServiciosService } from 'src/app/service/servicios.service';
-import { default as _rollupMoment, Moment } from 'moment';
-import 'moment/locale/es'
-import * as _moment from 'moment';
-const moment = _rollupMoment || _moment;
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+
 
 @Component({
-  selector: 'app-inicio',
-  templateUrl: './inicio.component.html',
-  styleUrls: ['./inicio.component.css']
+  selector: 'app-detalles',
+  templateUrl: './detalles.component.html',
+  styleUrls: ['./detalles.component.css']
 })
-export class InicioComponent implements OnInit {
-
-  email = ''
-  userDefault = // USER DEFAULT
-  {
-   "email":"andres@gmail.com",
-   "password":"1234"
-  }
+export class DetallesPeliculaComponent implements OnInit {
+  
+  id: any = ''
+  listaObservacion: any[] = [];
+  pelicula: any[] = []
   peliculas = [
     {
       id: "1",
@@ -77,27 +70,24 @@ export class InicioComponent implements OnInit {
       png: 'assets/Avengers.png'
     }
   ]
+  videoUrl: SafeResourceUrl | undefined; // Variable para la URL segura del video
+  idVideo = ""
 
-  correo: string
-  listaObservacion: any[] = [];
   constructor(
-    public userService: ServiciosService,
-    public router: Router,
-    private http: HttpClient
-    ) {
-      
-      this.correo = this.userDefault.email
-
-     }
+      private router: Router,
+      private route: ActivatedRoute, 
+      private sanitizer: DomSanitizer
+    ) { }
 
   ngOnInit(): void {
     const token = localStorage.getItem("usuario");
     this.validarSesion(token);
-  }
-
-
-  editElemento(id: string) {
-    this.router.navigate(['edit',id]);
+    this.id = this.route.snapshot.paramMap.get('id')
+    this.pelicula = this.peliculas.filter(p => p.id == this.id);
+    const partes = this.pelicula[0].Trailer_Link.split('=');
+    this.idVideo = partes[1]
+    this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(`https://www.youtube.com/embed/${this.idVideo}`);
+  
   }
 
   validarSesion(token: any) {
@@ -106,19 +96,10 @@ export class InicioComponent implements OnInit {
       this.router.navigateByUrl('login');
     }
   }
-
-  cerrarSesion() {
-    localStorage.clear();
-    this.router.navigateByUrl('login');
+  
+  volver() {
+         this.router.navigateByUrl('inicio');
   }
-
-ordenarPorTitulo() {
-  this.peliculas.sort((a, b) => a.Title.localeCompare(b.Title));
-}
-
-ordenarPorFechaLanzamiento() {
-  this.peliculas.sort((a, b) => parseInt(moment(a.Released_date).format('yyyyMMDD'))  - parseInt(moment(b.Released_date).format('yyyyMMDD')));
-}
 
   agregarAListaObservacion(pelicula: any) {
     if (!this.listaObservacion.some(p => p.Title === pelicula.Title)) {
@@ -132,7 +113,7 @@ ordenarPorFechaLanzamiento() {
     localStorage.setItem('listaObservacion', JSON.stringify(this.listaObservacion));
   }
 
-  estaEnListaObservacion(pelicula: any): boolean {
+  estaEnListaObservacion(id: any): boolean {
     const listaObservacionStr = localStorage.getItem('listaObservacion');
 
     if (!listaObservacionStr) {
@@ -140,11 +121,7 @@ ordenarPorFechaLanzamiento() {
     }
 
     const listaObservacion: any[] = JSON.parse(listaObservacionStr);
-    return listaObservacion.some(p => p.id === pelicula.id);
-  }
-
-  irADetallesPelicula(id: string) {
-    this.router.navigate(['/detalles', id]);
+    return listaObservacion.some(p => p.id === id);
   }
 
 }

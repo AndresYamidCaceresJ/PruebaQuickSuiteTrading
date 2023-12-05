@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "pruebaNetGrid": {
+    "QuickSuiteTrading": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/prueba-net-grid",
+            "outputPath": "dist/quick-suite-trading",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -65,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "pruebaNetGrid:build:production"
+              "browserTarget": "QuickSuiteTrading:build:production"
             },
             "development": {
-              "browserTarget": "pruebaNetGrid:build:development"
+              "browserTarget": "QuickSuiteTrading:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -76,7 +76,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "pruebaNetGrid:build"
+            "browserTarget": "QuickSuiteTrading:build"
           }
         },
         "test": {
